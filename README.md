@@ -3,10 +3,6 @@
 Data files for [SIREN](https://github.com/Harvard-Neutrino/SIREN): detector
 geometries, flux tables, and cross-section splines.
 
-Small files from upstream public repositories (e.g. SBNSoftware GDML files)
-are downloaded directly from source. This repository hosts files that are not
-available in a public upstream repo, or that require preprocessing.
-
 ## Directory structure
 
 ```
@@ -19,6 +15,12 @@ xsec/<model>/<version>/          -- cross-section splines
 
 ### detectors/SBN/v1/
 
-| File | Description | Origin |
-|------|-------------|--------|
-| `numi_g4export.gdml` | NuMI beamline geometry (g4numi Geant4 export) | Exported from g4numi; not in a public repo |
+GDML geometry files for the Fermilab Short-Baseline Neutrino program.
+Used by `load_detector("SBN", detector=...)` in SIREN.
+
+| File | Description | Upstream source |
+|------|-------------|-----------------|
+| `BooNE_50m.gdml` | BNB beamline geometry | [SBNSoftware/G4BNB](https://github.com/SBNSoftware/G4BNB/blob/master/geometry/BooNE_50m.gdml) |
+| `numi_g4export.gdml` | NuMI beamline geometry (Geant4 export) | g4numi (no public repo) |
+| `icarus_refactored_nounderscore_20230918_nowires.gdml` | ICARUS T600 detector | [SBNSoftware/icarusalg](https://github.com/SBNSoftware/icarusalg/blob/develop/icarusalg/Geometry/gdml/icarus_refactored_nounderscore_20230918_nowires.gdml) |
+| `sbnd_v02_06.gdml` | SBND detector | [SBNSoftware/sbndcode](https://github.com/SBNSoftware/sbndcode/blob/develop/sbndcode/Geometry/gdml/sbnd_v02_06.gdml) |
