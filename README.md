@@ -31,6 +31,6 @@ Used by `load_detector("SBN", detector=...)` in SIREN.
 MARLEY v2.0.0 reaction, CRPA response, mass, spin-parity, charge-radius,
 nuclear-structure, and logger inputs used by SIREN's
 `MarleyCrossSection-v2.0` resource. The files are distributed as one
-SHA-256-pinned zip so SIREN can fetch the complete, internally consistent data
-bundle in a single download. See the directory README for exact provenance and
-archive contents.
+SHA-256-pinned xz-compressed tar archive so SIREN can fetch the complete,
+internally consistent data bundle in a single download. See the directory
+README for exact provenance and archive contents.

@@ -5,7 +5,7 @@ This directory contains the MARLEY v2 data used by SIREN's
 
 ## Contents
 
-`MarleyCrossSection-v2.0.zip` contains 126 runtime data files with their
+`MarleyCrossSection-v2.0.tar.xz` contains 126 runtime data files with their
 original MARLEY directory layout:
 
 - `mass_table.js`, `gs_spin_parity_table.txt`, and
@@ -20,7 +20,7 @@ original MARLEY directory layout:
 Archive SHA-256:
 
 ```text
-7965f0ea89dda01dfa8a5d4eb5af36e9ff6f440ed7945afb3ea64236b2931cf7  MarleyCrossSection-v2.0.zip
+eb64ee2b330001205c96118d5dbdd2021c41d4f08b506363cef8a700433a6aa8  MarleyCrossSection-v2.0.tar.xz
 ```
 
 ## Provenance
