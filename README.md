@@ -22,7 +22,7 @@ Used by `load_detector("SBN", detector=...)` in SIREN.
 | File | Description | Upstream source |
 |------|-------------|-----------------|
 | `BNB/BooNE_50m.gdml` | BNB beamline geometry | [SBNSoftware/G4BNB](https://github.com/SBNSoftware/G4BNB/blob/master/geometry/BooNE_50m.gdml) |
-| `NuMI/numi_ME_g4export_2026-09-17.gdml` | NuMI ME / NOvA mechanical geometry | [Export provenance and validation limits](detectors/SBN/v1/NuMI/README.md) |
+| `NuMI/numi_ME_g4export_2026-09-17.gdml` | NuMI beamline, ME / NOvA configuration (Geant4 export) | [TAMU-Neutrino/g4numi](https://github.com/TAMU-Neutrino/g4numi); see the [NuMI README](detectors/SBN/v1/NuMI/README.md) |
 | `ICARUS/icarus_refactored_nounderscore_20230918_nowires.gdml` | ICARUS | [SBNSoftware/icarusalg](https://github.com/SBNSoftware/icarusalg/blob/develop/icarusalg/Geometry/gdml/icarus_refactored_nounderscore_20230918_nowires.gdml) |
 | `SBND/sbnd_v02_06.gdml` | SBND detector | [SBNSoftware/sbndcode](https://github.com/SBNSoftware/sbndcode/blob/develop/sbndcode/Geometry/gdml/sbnd_v02_06.gdml) |
 

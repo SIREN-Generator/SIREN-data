@@ -1,8 +1,0 @@
-cmake_minimum_required(VERSION 3.20)
-project(NuMIGeometryChecks LANGUAGES CXX)
-find_package(Geant4 REQUIRED gdml)
-include(${Geant4_USE_FILE})
-foreach(name audit_geometry probe_overlap)
-    add_executable(${name} ${name}.cc)
-    target_link_libraries(${name} PRIVATE ${Geant4_LIBRARIES})
-endforeach()
