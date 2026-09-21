@@ -36,14 +36,18 @@ sensitive `volTPCActive`, the 32 PMTs and the CRT panels. Used by SIREN's
 LArSoft detector (world) coordinates, cm. Positions quoted below for the
 contents of `volDetEnclosure` are relative to that enclosure, which sits at
 (128.175, 0, 518.5) in the world; adding that offset gives the world frame in
-which the collection wire plane `volTPCPlane` (posTPCPlane2, x = -128.175
-inside `volTPC`) lies at x = 0, the induction planes at x = -0.3 and -0.6, the
-cathode plate at x = 255.6, the `volTPC` box centre at (128.175, 0.97, 518.5)
-and the `volTPCActive` centre at (126.625, 0.97, 518.5), so the active volume
-spans x = -1.55 to 254.8, y = -115.5 to 117.5 and z = 0.1 to 1036.9. The
-origin is therefore at the collection plane, 0.97 cm below the TPC-box
-mid-height and at the upstream TPC face; +x points from the anode planes
-toward the cathode (ionisation drifts along -x), +y up, +z along the beam.
+which the `volTPC` box centre is at (128.175, 0.97, 518.5), the
+`volTPCActive` centre at (126.625, 0.97, 518.5), so the active volume spans
+x = -1.55 to 254.8, y = -115.5 to 117.5 and z = 0.1 to 1036.9, and the
+cathode plate `volCathodePlate` at x = 255.6. The origin follows the
+upstream LArSoft convention of the wired geometry (`microboonev12.gdml`),
+which places its wire planes at x = -128.775, -128.475 and -128.175 inside
+`volTPC`, i.e. world x = -0.6, -0.3 and 0: the origin is at the collection
+plane, 0.97 cm below the TPC-box mid-height and at the upstream TPC face.
+This `nowires` export keeps the plane solids (`TPCPlane`, `TPCPlaneVert`)
+but places no wire-plane volumes, so those planes cannot be inspected in
+this asset. +x points from the anode planes toward the cathode (ionisation
+drifts along -x), +y up, +z along the beam.
 The world is an Air box of 1483.26 x 1060 x 1483.26 m; its placements,
 listed with their positions, are
 
@@ -86,7 +90,9 @@ point G4BNB records as `bsim::Location(0, 0, 47000 cm, "MicroBooNE")`
 never installed) is defined but not placed. Materials: `LAr` 1.40,
 `Concrete` 2.3, `Dirt` 1.7, `Polystyrene` 1.06, `Air` 0.001205 g/cm3.
 Solids are boxes, tubes, spheres and boolean unions, subtractions and
-intersections (2,336 boxes, 709 tubes, 3 spheres, 54 booleans). Published
+intersections: 3,163 definitions (2,397 boxes, 709 tubes, 3 spheres, 24
+unions, 29 subtractions, 1 intersection) in 2,408 logical volumes with 3,945
+placements and 30 materials. Published
 descriptions: JINST 12 (2017) P02017 (detector) and JINST 16 (2021) P04004,
 Sec. 2.1 (the simulated LArTF building).
 
