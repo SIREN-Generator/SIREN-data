@@ -86,7 +86,6 @@ in a configured g4numi environment:
 g4numi /absolute/path/to/export_ME.mac FTFP_BERT
 ```
 
-
 ### Validation and known limitations
 
 The following checks were run on the published file with tooling kept outside
