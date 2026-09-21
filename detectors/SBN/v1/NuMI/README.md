@@ -40,21 +40,36 @@ below pin the published files.
 ## numi_ME_g4export_2026-09-17.gdml
 
 The nominal ME mechanical geometry, exported with the macro given under the
-export procedure below. Selecting `BeamConfig me000z200i` alone keeps
-the legacy target, horn-2 and baffle positions, so the macro sets every ME
-placement explicitly, following the fork's `macros/template_ME.mac`.
+export procedure below. Selecting `BeamConfig me000z200i` alone keeps the
+legacy target, horn-2 and baffle positions: the fork's `macros/template_ME.mac`
+notes that `BeamConfig` is deprecated for ME and sets only the horn current.
+The macro therefore sets every ME placement explicitly. Values follow that
+template and the ME production defaults that fill its placeholders in
+`ProcessG4NuMI.py` at the same commit:
 
-| Setting | Value |
-| --- | --- |
-| BeamConfig / RunPeriod | `me000z200i` / `0` |
-| Target position | `(0, 0, -143.3)` cm |
-| Horn 1 position | `(0, 0, 3)` cm |
-| Horn 2 position | `(0, 0, 1918)` cm |
-| Baffle position / bore radius | `(0, 0, -380)` cm / `6.5` mm |
-| Horn 1 model | alternate, unrefined |
-| Horn water / outer-thickness adjustment | `1` mm / `0.9525` cm |
-| Duratek and target-hall block shifts | `4.5` m each |
-| Water in target | disabled |
+| Setting | Value | Origin |
+| --- | --- | --- |
+| `DebugLevel` / `useNuBeam` / `RunPeriod` | `0` / `true` / `0` | template |
+| `BeamConfig` | `me000z200i` | production default |
+| `targetPosition` | `(0, 0, -143.3)` cm | production default (template comment: "10/2016 default") |
+| `horn1Position` | `(0, 0, 3)` cm | production default |
+| `horn2Position` | `(0, 0, 1918)` cm | z fixed in template; x, y production default |
+| `bafflePosition` / `baffleInnerRadius` | `(0, 0, -380)` cm / `6.5` mm | template |
+| `Horn1IsAlternate` / `Horn1IsRefined` | `true` / `false` | production default (new horn-1 geometry, no fine segmentation) |
+| `HornWaterLayerThickness` | `1` mm | production default |
+| `deltaOuterThickness` (horn-1 outer conductor) | `0.9525` cm | template |
+| `duratekShift` / `thblockShift` | `4.5` m each | template |
+| `useWaterInTgt` / `LengthOfWaterInTgt` | `false` / `3` cm | production default; the length is unused while water is disabled |
+| `UseCorrHornCurrent` | `true` | differs from the template (`false`); see below |
+
+Differences from the template. `UseCorrHornCurrent` is `true` here and `false`
+in the template; in `NumiDataInput.cc` at this commit the flag only alters the
+horn current for an LE horn configuration, so it has no effect on this ME
+export, and the GDML carries no field in any case. `LengthOfWaterInTgt` is
+kept from the template, but `NumiTarget.cc` builds the water volumes only when
+`useWaterInTgt` is true. The template's beam-spot, importance-weighting,
+ntuple, seed and `/run/beamOn` commands are omitted because the export only
+constructs the geometry and writes GDML.
 
 Positions are g4numi command parameters in its native MCZERO frame, not
 necessarily GDML mother-volume centres. This asset describes geometry only: it
@@ -66,8 +81,8 @@ run-dependent survey. ME is the only supported configuration.
 - Repository: https://github.com/TAMU-Neutrino/g4numi
 - Upstream: https://github.com/NuSoftHEP/g4numi
 - Commit: `4658ab16a5aabe54d3ace87826b31baf03720ddd` (2026-03-29)
-- Configuration: `macros/template_ME.mac` with the explicit nominal ME
-  settings above (macro below)
+- Configuration: `macros/template_ME.mac` filled with the ME production
+  defaults of `ProcessG4NuMI.py`, as tabulated above (macro below)
 
 ### Export date
 
@@ -114,8 +129,8 @@ environment with `g4numi export_ME.mac FTFP_BERT`, was:
 The following checks were run on the published file with tooling kept outside
 this data repository.
 
-- All 48 target-fin centres are at the ME positions (z from -1363.5 mm to
-  -212.0 mm in 24.5 mm steps) and horn 2 is at z = 19180 mm. The target and
+- All 48 target-fin centres are at the ME axial positions (z from -1363.5 mm
+  to -212.0 mm in 24.5 mm steps) and horn 2 is at z = 19180 mm. The target and
   horn-1 axial envelopes are separated by 87.61 mm.
 - Independent Geant4 11.3.2 overlap checks of the target and horn-1 mother
   volumes pass at 0.01 mm tolerance with 20,000 surface samples. A targeted
