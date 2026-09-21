@@ -33,10 +33,19 @@ sensitive `volTPCActive`, the 32 PMTs and the CRT panels. Used by SIREN's
 
 ### Geometry description
 
-LArSoft detector coordinates (cm): the origin is at the anode plane, the TPC
-mid-height and the upstream TPC face; +x is the drift direction (anode to
-cathode), +y up, +z along the beam. The world is an Air box of
-1483.26 x 1060 x 1483.26 m; its placements, listed with their positions, are
+LArSoft detector (world) coordinates, cm. Positions quoted below for the
+contents of `volDetEnclosure` are relative to that enclosure, which sits at
+(128.175, 0, 518.5) in the world; adding that offset gives the world frame in
+which the collection wire plane `volTPCPlane` (posTPCPlane2, x = -128.175
+inside `volTPC`) lies at x = 0, the induction planes at x = -0.3 and -0.6, the
+cathode plate at x = 255.6, the `volTPC` box centre at (128.175, 0.97, 518.5)
+and the `volTPCActive` centre at (126.625, 0.97, 518.5), so the active volume
+spans x = -1.55 to 254.8, y = -115.5 to 117.5 and z = 0.1 to 1036.9. The
+origin is therefore at the collection plane, 0.97 cm below the TPC-box
+mid-height and at the upstream TPC face; +x points from the anode planes
+toward the cathode (ionisation drifts along -x), +y up, +z along the beam.
+The world is an Air box of 1483.26 x 1060 x 1483.26 m; its placements,
+listed with their positions, are
 
 - `volDetEnclosure` at (128.175, 0, 518.5): the Air interior of the LArTF pit
   and hall (a boolean of the pit cylinder and the above-grade cylinder of
@@ -84,9 +93,10 @@ Sec. 2.1 (the simulated LArTF building).
 ### Placement in SIREN
 
 `resources/detectors/SBN/SBN-v1/` places the LArSoft world origin at BNB
-`(-1.28175, 0, 464.815)` m with no rotation, so the TPC-box centre is the
-G4BNB point `(0, 0, 470)` m and the detector origin; the active volume is
-exposed as `volTPCActive` with its (-1.55, +0.97, 0) cm offset. The loader
+`(-1.28175, 0, 464.815)` m with no rotation, so the cryostat axis and
+`volTPC` x/z centre, world (128.175, 0, 518.5) cm, is the G4BNB point
+`(0, 0, 470)` m and the detector origin; the active volume is exposed as
+`volTPCActive`, whose centre is offset (-1.55, +0.97, 0) cm from that point. The loader
 composes a copy from which the `volVacuumSpace` placement is removed
 (`microboonev12_nowires_siren.gdml`, generated at load time, never shipped,
 and marked inside the file as derived from this one, as the Apache-2.0
