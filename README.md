@@ -25,6 +25,7 @@ Used by `load_detector("SBN", detector=...)` in SIREN.
 | `NuMI/numi_g4export.gdml` | NuMI beamline geometry (Geant4 export) | [NuSoftHEP/g4numi](https://github.com/NuSoftHEP/g4numi) (exported from Geant4) |
 | `ICARUS/icarus_refactored_nounderscore_20230918_nowires.gdml` | ICARUS | [SBNSoftware/icarusalg](https://github.com/SBNSoftware/icarusalg/blob/develop/icarusalg/Geometry/gdml/icarus_refactored_nounderscore_20230918_nowires.gdml) |
 | `SBND/sbnd_v02_06.gdml` | SBND detector | [SBNSoftware/sbndcode](https://github.com/SBNSoftware/sbndcode/blob/develop/sbndcode/Geometry/gdml/sbnd_v02_06.gdml) |
+| `MicroBooNE/microboonev12_nowires.gdml` | MicroBooNE detector and LArTF building (production geometry, wires omitted) | [uboone/ubcore](https://github.com/uboone/ubcore/blob/03c0bb064f1d30ab0e90380a4cfe2bdc42cd9045/ubcore/Geometry/gdml/microboonev12_nowires.gdml) |
 
 ### processes/MarleyCrossSection/MarleyCrossSection-v2.0/
 
