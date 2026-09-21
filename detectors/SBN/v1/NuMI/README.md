@@ -86,16 +86,11 @@ in a configured g4numi environment:
 g4numi /absolute/path/to/export_ME.mac FTFP_BERT
 ```
 
-[validation_ME.json](validation_ME.json) records the sha256 of the g4numi
-executable, the geometry source files, the export macro and every dynamic
-library actually loaded during the export, together with the validation
-results summarised below.
 
 ### Validation and known limitations
 
 The following checks were run on the published file with tooling kept outside
-this data repository. Their parameters and results are recorded in
-[validation_ME.json](validation_ME.json).
+this data repository.
 
 - All 48 target-fin centres are at the ME positions (z from -1363.5 mm to
   -212.0 mm in 24.5 mm steps) and horn 2 is at z = 19180 mm. The target and
@@ -121,8 +116,7 @@ The horn-1 protrusions are approximately 0.36–1.62 mm; their origin remains
 unresolved because the native Geant4 10.4.p02 pre-export overlap check reports
 these horn pieces as OK. The native check does report shielding/decay-pipe and
 downstream containment issues. Different Geant4 versions and random surface
-samples need not report identical volumes. The flagged volumes are listed in
-[validation_ME.json](validation_ME.json); this export fixes the ME
+samples need not report identical volumes. This export fixes the ME
 configuration and does not modify those source solids or claim
 production-wide validation.
 
