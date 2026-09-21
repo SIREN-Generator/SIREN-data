@@ -88,8 +88,10 @@ Sec. 2.1 (the simulated LArTF building).
 G4BNB point `(0, 0, 470)` m and the detector origin; the active volume is
 exposed as `volTPCActive` with its (-1.55, +0.97, 0) cm offset. The loader
 composes a copy from which the `volVacuumSpace` placement is removed
-(`microboonev12_nowires_siren.gdml`): composed as is, that box replaces the
-SBN composite's atmosphere over the whole site. The world box itself is
+(`microboonev12_nowires_siren.gdml`, generated at load time, never shipped,
+and marked inside the file as derived from this one, as the Apache-2.0
+notice asks): composed as is, that box replaces the SBN composite's
+atmosphere over the whole site. The world box itself is
 dropped (`as_assembly`), so the building and its local ground sit in the site
 geology; the local `volGround` takes precedence over the composite's uniform
 till within 23 m of the detector.
