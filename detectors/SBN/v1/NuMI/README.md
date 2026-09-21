@@ -39,8 +39,8 @@ below pin the published files.
 
 ## numi_ME_g4export_2026-09-17.gdml
 
-The nominal ME mechanical geometry, exported with the complete settings in
-[export_ME.mac](export_ME.mac). Selecting `BeamConfig me000z200i` alone keeps
+The nominal ME mechanical geometry, exported with the macro given under the
+export procedure below. Selecting `BeamConfig me000z200i` alone keeps
 the legacy target, horn-2 and baffle positions, so the macro sets every ME
 placement explicitly, following the fork's `macros/template_ME.mac`.
 
@@ -67,8 +67,7 @@ run-dependent survey. ME is the only supported configuration.
 - Upstream: https://github.com/NuSoftHEP/g4numi
 - Commit: `4658ab16a5aabe54d3ace87826b31baf03720ddd` (2026-03-29)
 - Configuration: `macros/template_ME.mac` with the explicit nominal ME
-  settings above, as [export_ME.mac](export_ME.mac)
-  (sha256 `ec790a1acf176d1db08013e10fc442cc396aaf905c1e6524263be2e630e6318c`)
+  settings above (macro below)
 
 ### Export date
 
@@ -79,11 +78,35 @@ run-dependent survey. ME is the only supported configuration.
 An existing macOS ARM64 build of g4numi with Geant4 10.4.p02 and the
 `FTFP_BERT` physics list was used. It was not rebuilt for this export, and no
 events were generated. The checkout carried tracking-only changes to
-backward-track killing and no geometry changes. From an empty output directory
-in a configured g4numi environment:
+backward-track killing and no geometry changes. The export macro, saved as
+`export_ME.mac` and run from an empty output directory in a configured g4numi
+environment with `g4numi export_ME.mac FTFP_BERT`, was:
 
-```sh
-g4numi /absolute/path/to/export_ME.mac FTFP_BERT
+```
+/NuMI/run/DebugLevel 0
+/NuMI/run/useNuBeam true
+/NuMI/det/RunPeriod 0
+/NuMI/det/BeamConfig me000z200i
+
+# BeamConfig alone retains legacy positions. Set the complete ME geometry.
+/NuMI/run/useWaterInTgt false
+/NuMI/det/LengthOfWaterInTgt 3 cm
+/NuMI/det/set/targetPosition 0 0 -143.3 cm
+/NuMI/det/Horn1IsAlternate true
+/NuMI/det/Horn1IsRefined false
+/NuMI/det/HornWaterLayerThickness 1 mm
+/NuMI/det/UseCorrHornCurrent true
+/NuMI/det/set/horn1Position 0 0 3 cm
+/NuMI/det/set/horn2Position 0 0 1918 cm
+/NuMI/det/set/deltaOuterThickness 0.9525 cm
+/NuMI/det/set/duratekShift 4.5 m
+/NuMI/det/set/thblockShift 4.5 m
+/NuMI/det/set/bafflePosition 0 0 -380 cm
+/NuMI/det/set/baffleInnerRadius 6.5 mm
+
+/NuMI/det/update
+/NuMI/output/GDMLref true
+/NuMI/output/writeGDML numi_ME_g4export_2026-09-17.gdml
 ```
 
 ### Validation and known limitations
